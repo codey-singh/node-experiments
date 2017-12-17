@@ -1,0 +1,25 @@
+{
+  "name": "node-experiments",
+  "version": "1.0.0",
+  "description": "A sample REST API in node and express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codey-singh/node-experiments.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "REST",
+    "API"
+  ],
+  "author": "Bhajanpreet Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codey-singh/node-experiments/issues"
+  },
+  "homepage": "https://github.com/codey-singh/node-experiments#readme"
+}
