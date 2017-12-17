@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/codey-singh/node-experiments#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1"
   }
 }
