@@ -8,10 +8,18 @@ var app = express();
 
 var mongoose = require('mongoose');
 
-var db = mongoose.connect(DB);
+var db = mongoose.connect(DB, { useMongoClient: true });
+
+var Book = require('./models/bookModel');
 
 app.get("/", (request, response)=>{
-  response.send("Hi from express");
+  Book.find((err, books)=>{
+    if(err)
+      response.status(500).send(err);
+    else {
+      response.json(books);      
+    }
+  });
 })
 
 .listen(PORT, ()=>{
