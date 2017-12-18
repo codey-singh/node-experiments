@@ -12,7 +12,9 @@ var mongoose = require('mongoose');
 
 var db = mongoose.connect(DB, { useMongoClient: true });
 
-var bookRouter = require('./routes/bookRoutes');
+var Book = require('./models/bookModel');
+
+var bookRouter = require('./routes/bookRoutes')(Book);
 
 app.use(bodyParser.urlencoded({extended:true}));
 
