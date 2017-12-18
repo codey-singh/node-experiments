@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var bookModel = new Schema({
   author : { type : String },
   title :  { type : String },
-  genere :  { type : String },
+  genre :  { type : String },
   read :  { type : Boolean, default : false }
 });
 
