@@ -22,6 +22,16 @@ router.get('/books',(request, response)=>{
       response.json(books);      
     }
   });
+})
+
+.get('/books/:id', (request, response)=>{
+  Book.findOne({ _id : request.params.id }, (err, book)=>{
+    if(err)
+      response.status(500).send(err);
+    else {
+      response.json(book);      
+    }
+  });
 });
 
 app.use("/api/v1", router) 
