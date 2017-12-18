@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(bodyParser.json());
 
-app.use("/api/v1", bookRouter) 
+app.use("/api/v1/books", bookRouter) 
 
 .listen(PORT, ()=>{
   console.log(`Gulp started express server on port ${ PORT }`);

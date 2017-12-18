@@ -2,7 +2,7 @@ var express = require('express');
 
 var routes = (Book)=>{
   var bookRouter = express.Router();
-  bookRouter.route('/books')
+  bookRouter.route('/')
 
   .get((request, response)=>{
     Book.find((err, books)=>{
@@ -20,7 +20,7 @@ var routes = (Book)=>{
     response.status(201).send(book);
   });
 
-  bookRouter.route('/books/:id')
+  bookRouter.route('/:id')
   .get((request, response)=>{
     Book.findOne({ _id : request.params.id }, (err, book)=>{
       if(err)
