@@ -6,6 +6,8 @@ const DB = process.env.DB;
 
 var app = express();
 
+var bodyParser = require('body-parser');
+
 var mongoose = require('mongoose');
 
 var db = mongoose.connect(DB, { useMongoClient: true });
@@ -13,6 +15,10 @@ var db = mongoose.connect(DB, { useMongoClient: true });
 var Book = require('./models/bookModel');
 
 var router = express.Router();
+
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.use(bodyParser.json());
 
 router.get('/books',(request, response)=>{
   Book.find((err, books)=>{
@@ -22,6 +28,12 @@ router.get('/books',(request, response)=>{
       response.json(books);      
     }
   });
+})
+
+.post('/books', (request, response)=>{
+  let book = new Book(request.body);
+  book.save();
+  response.status(201).send(book);
 })
 
 .get('/books/:id', (request, response)=>{
