@@ -12,7 +12,9 @@ var db = mongoose.connect(DB, { useMongoClient: true });
 
 var Book = require('./models/bookModel');
 
-app.get("/", (request, response)=>{
+var router = express.Router();
+
+router.get('/books',(request, response)=>{
   Book.find((err, books)=>{
     if(err)
       response.status(500).send(err);
@@ -20,7 +22,9 @@ app.get("/", (request, response)=>{
       response.json(books);      
     }
   });
-})
+});
+
+app.use("/api/v1", router) 
 
 .listen(PORT, ()=>{
   console.log(`Gulp started express server on port ${ PORT }`);
