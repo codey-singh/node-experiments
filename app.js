@@ -6,21 +6,21 @@ const DB = process.env.DB;
 
 var app = express();
 
+var bodyParser = require('body-parser');
+
 var mongoose = require('mongoose');
 
 var db = mongoose.connect(DB, { useMongoClient: true });
 
 var Book = require('./models/bookModel');
 
-app.get("/", (request, response)=>{
-  Book.find((err, books)=>{
-    if(err)
-      response.status(500).send(err);
-    else {
-      response.json(books);      
-    }
-  });
-})
+var bookRouter = require('./routes/bookRoutes')(Book);
+
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.use(bodyParser.json());
+
+app.use("/api/v1/books", bookRouter) 
 
 .listen(PORT, ()=>{
   console.log(`Gulp started express server on port ${ PORT }`);
