@@ -2,7 +2,7 @@ var express = require('express');
 
 const PORT = process.env.PORT || 8080;
 
-const DB = process.env.DB;
+const DB = process.env.DB || 'mongodb://localhost:27017/booksAPI';
 
 var app = express();
 
